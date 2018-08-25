@@ -2,17 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 
-**Commits on Jul 26, 2018**
+**Commits on 25/8/18** (Nathan Bradbury)
 
-Text goes here
-
-**Commits on Jul 18, 2018**
-
-Text goes here
-
-**Commits on Jul 15, 2018**
-
-Text goes here
+Create database/table structures and place in the Model Folder. This includes tables for TaskData, UserData, LUStatus and LUPriority.cs. I also included an interface to be used with the database.
 
 
 
