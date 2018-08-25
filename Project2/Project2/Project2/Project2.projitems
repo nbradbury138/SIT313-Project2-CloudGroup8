@@ -16,12 +16,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\SQLInterface.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Model\LUPriority.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\LUStatus.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaskData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\UserData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Model\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModel\" />
     <Folder Include="$(MSBuildThisFileDirectory)View\" />
   </ItemGroup>
