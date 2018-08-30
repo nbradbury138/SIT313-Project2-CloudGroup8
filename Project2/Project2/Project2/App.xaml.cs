@@ -1,6 +1,8 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Project2.View;
+using Project2.Data;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace Project2
@@ -9,10 +11,10 @@ namespace Project2
 	{
 		public App ()
 		{
-			InitializeComponent();
+		    InitializeComponent();
 
-			MainPage = new MainPage();
-		}
+            MainPage = new MainPage();
+        }
 
 		protected override void OnStart ()
 		{

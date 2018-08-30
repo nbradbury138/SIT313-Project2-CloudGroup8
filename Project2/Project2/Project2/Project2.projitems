@@ -16,6 +16,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Data\TaskDataRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DBHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\SQLInterface.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
