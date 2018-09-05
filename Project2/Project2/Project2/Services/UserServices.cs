@@ -28,7 +28,7 @@ namespace Project2.Services
             httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             
             var response = await client.PostAsync(
-                "http://192.168.1.51:45455/api/Account/Register", httpContent);
+                "https://sit313apiserver.azurewebsites.net/api/Account/Register", httpContent);
 
             return response.IsSuccessStatusCode;
         }

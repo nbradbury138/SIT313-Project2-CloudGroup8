@@ -197,7 +197,7 @@ namespace ProjectWebServer.Controllers
             {
                 var code = _userManager.GenerateEmailConfirmationToken(model.Email);
                 var callbackUrl = Url.Link("Confirm Email", new { Controller = "Home", Action = "ConfirmEmail", userId = user.Id, code = code });
-                await SendEmailAsync(user.Email, "Confirm your account",
+                await _userManager.SendEmailAsync(user.Email, "Confirm your account",
                         $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
             }
 
@@ -318,22 +318,6 @@ namespace ProjectWebServer.Controllers
                 _random.GetBytes(data);
                 return HttpServerUtility.UrlTokenEncode(data);
             }
-        }
-
-        private Task SendEmailAsync(string email, string subject, string message)
-        {
-            var apiKey = Environment.GetEnvironmentVariable("SendGridApiKey");      // This string is set on the Azure server
-            var client = new SendGridClient(apiKey);
-            var msg = new SendGridMessage()
-            {
-                // should be a domain other than yahoo.com, outlook.com, hotmail.com, gmail.com
-                From = new EmailAddress("donotreply@sit313mgmt.azurewebsites.net", "Task Management System"),
-                Subject = subject,
-                PlainTextContent = message,
-                HtmlContent = message
-            };
-            msg.AddTo(new EmailAddress(email));
-            return client.SendEmailAsync(msg);
         }
 
         #endregion
