@@ -42,7 +42,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Page1.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Page1.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\RegisterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
