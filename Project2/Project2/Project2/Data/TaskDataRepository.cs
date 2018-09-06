@@ -14,6 +14,8 @@ namespace Project2.Data
             dbhelp = new DBHelper();
         }
 
+        #region Task Methods
+
         public void DeleteTask(int taskId)
         {
             dbhelp.DeleteTask(taskId);
@@ -43,7 +45,6 @@ namespace Project2.Data
         {
             dbhelp.UpdateTask(task);
         }
-
-        
+        #endregion Task Methods
     }
 }

@@ -30,7 +30,6 @@ namespace Project2.Droid.Database
             {
                 connection = new SQLiteConnection(path);
             }
-
             // Return the database connection  
             return connection;
         }
