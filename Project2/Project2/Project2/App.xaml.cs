@@ -16,6 +16,7 @@ namespace Project2
 
 			MainPage = new RegisterPage();
       //MainPage = new NavigationPage(new Page1());
+      		}
 
 		protected override void OnStart ()
 		{
