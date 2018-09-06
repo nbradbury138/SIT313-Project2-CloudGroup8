@@ -3,5 +3,7 @@
   <PropertyGroup>
     <SelectedDevice>Nexus_5X_API_16</SelectedDevice>
     <DefaultDevice>Nexus_5X_API_16</DefaultDevice>
+    <SelectedDevice>my_device</SelectedDevice>
+    <DefaultDevice>my_device</DefaultDevice>
   </PropertyGroup>
 </Project>

@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Project2.Droid.Database;
 
 namespace Project2.Droid
 {
@@ -14,6 +15,7 @@ namespace Project2.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
