@@ -22,5 +22,6 @@ namespace Project2.Model
             UserName = username;
             Password = password;
         }
+
     }
 }
