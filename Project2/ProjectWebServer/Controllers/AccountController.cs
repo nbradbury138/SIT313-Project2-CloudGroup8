@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
+using System.Web.Http.Routing;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -16,8 +16,6 @@ using Microsoft.Owin.Security.OAuth;
 using ProjectWebServer.Models;
 using ProjectWebServer.Providers;
 using ProjectWebServer.Results;
-using SendGrid;
-using SendGrid.Helpers.Mail;
 
 namespace ProjectWebServer.Controllers
 {
@@ -156,25 +154,6 @@ namespace ProjectWebServer.Controllers
             return Ok();
         }
 
-        // POST api/Account/SetPassword
-        [Route("SetPassword")]
-        public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
-
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
-
-            return Ok();
-        }
-
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
@@ -186,7 +165,6 @@ namespace ProjectWebServer.Controllers
             }
 
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
             if (!result.Succeeded)
@@ -195,10 +173,18 @@ namespace ProjectWebServer.Controllers
             }
             else
             {
-                var code = _userManager.GenerateEmailConfirmationToken(model.Email);
-                var callbackUrl = Url.Link("Confirm Email", new { Controller = "Home", Action = "ConfirmEmail", userId = user.Id, code = code });
-                await _userManager.SendEmailAsync(user.Email, "Confirm your account",
-                        $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
+                try
+                {
+                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Link("Default", new { Controller = "Home", Action = "ConfirmEmail", userId = user.Id, code = code });
+                    await UserManager.SendEmailAsync(user.Email, "Confirm your account",
+                            $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
+                }
+                catch (Exception ex)
+                {
+                    var details = ex;
+                }
+
             }
 
             return Ok();
