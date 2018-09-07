@@ -26,6 +26,9 @@ namespace Project2.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Splat.Resource.String.library_name = global::Project2.Droid.Resource.String.library_name;
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::Project2.Droid.Resource.String.ApplicationName;
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::Project2.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Project2.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -3962,6 +3965,12 @@ namespace Project2.Droid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f0a003d
+			public const int ApplicationName = 2131361853;
+			
+			// aapt resource value: 0x7f0a003c
+			public const int Hello = 2131361852;
+			
 			// aapt resource value: 0x7f0a0015
 			public const int abc_action_bar_home_description = 2131361813;
 			
@@ -4058,6 +4067,9 @@ namespace Project2.Droid
 			// aapt resource value: 0x7f0a0035
 			public const int character_counter_pattern = 2131361845;
 			
+			// aapt resource value: 0x7f0a003e
+			public const int library_name = 2131361854;
+			
 			// aapt resource value: 0x7f0a0000
 			public const int mr_button_content_description = 2131361792;
 			
@@ -4075,7 +4087,7 @@ namespace Project2.Droid
 			
 			// aapt resource value: 0x7f0a0005
 			public const int mr_chooser_title = 2131361797;
-			
+      
 			// aapt resource value: 0x7f0a0006
 			public const int mr_controller_album_art = 2131361798;
 			

@@ -1,3 +1,4 @@
+using Project2.View;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,8 +14,14 @@ namespace Project2
 		{
 		    InitializeComponent();
 
+<<<<<<< HEAD
             MainPage = new NavigationPage(new Login());
         }
+=======
+			MainPage = new RegisterPage();
+      //MainPage = new NavigationPage(new Page1());
+      		}
+>>>>>>> 515de539a096d0773710560709f1b3af1e1276f2
 
 		protected override void OnStart ()
 		{
