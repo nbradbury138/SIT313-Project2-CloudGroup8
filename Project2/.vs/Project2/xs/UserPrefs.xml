@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{D96B09BA-1DB5-458E-A02D-FD80C8F24F0C}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Project2/Project2/View/Registration.xaml">
+    <Files>
+      <File FileName="Project2/Project2/App.xaml.cs" Line="13" Column="4" />
+      <File FileName="Project2/Project2.iOS/Resources/LaunchScreen.storyboard" />
+      <File FileName="Project2/Project2/Model/TaskData.cs" Line="1" Column="1" />
+      <File FileName="Project2/Project2/View/Registration.xaml" Line="27" Column="54" />
+      <File FileName="Project2/Project2/View/Registration.xaml.cs" Line="1" Column="1" />
+      <File FileName="Project2/Project2/App.xaml" Line="8" Column="15" />
+      <File FileName="Project2/Project2.Android/obj/Debug/View/Registration.xaml.g.cs" Line="26" Column="1" />
+      <File FileName="Project2/Project2/View/Login.xaml" Line="14" Column="31" />
+      <File FileName="Project2/Project2/View/Login.xaml.cs" Line="1" Column="1" />
+      <File FileName="Project2/Project2/View/HomePage.xaml" Line="11" Column="20" />
+      <File FileName="Project2/Project2/View/HomePage.xaml.cs" Line="1" Column="1" />
+      <File FileName="Project2/Project2/View/CreateTask.xaml" Line="12" Column="19" />
+      <File FileName="Project2/Project2/View/CreateTask.xaml.cs" Line="1" Column="1" />
+      <File FileName="Project2/Project2/View/TaskScreen.xaml" Line="6" Column="1" />
+      <File FileName="Project2/Project2/View/TaskScreen.xaml.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Project2.Android PreferredExecutionTarget="Android.Android_Accelerated_Oreo" AndroidDesignerPreferredTheme="Theme.DeviceDefault.NoActionBar.Fullscreen" />
+  <MonoDevelop.Ide.ItemProperties.Project2.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.75946BCB-8FBD-42C3-A6E1-4248156B0C66" />
+</Properties>
