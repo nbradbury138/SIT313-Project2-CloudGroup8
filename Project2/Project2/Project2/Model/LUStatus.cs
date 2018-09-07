@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using SQLite.Net.Attributes;
+using SQLite;
 
 namespace Project2.Model
 {
@@ -12,5 +12,16 @@ namespace Project2.Model
         [PrimaryKey]
         public string StatusCode { get; set; }
         public string StatusDescription { get; set; }
+
+        public LUStatus()
+        {
+
+        }
+
+        public LUStatus(string statusCode, string statusDesc)
+        {
+            StatusCode = statusCode;
+            StatusDescription = statusDesc;
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using SQLite.Net;
+using SQLite;
 
 namespace Project2.Interfaces
 {

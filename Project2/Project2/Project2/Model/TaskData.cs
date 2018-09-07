@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using SQLite.Net.Attributes;
+using SQLite;
 
 namespace Project2.Model
 {
@@ -16,5 +16,28 @@ namespace Project2.Model
         public string User { get; set; }
         public string Status { get; set; }
         public DateTime DueDate { get; set; }
+
+
+        public TaskData()
+        {
+
+        }
+
+        public TaskData(string name, string desc, string priority, string user, string status, DateTime duedate)
+        {
+            TaskName = name;
+            Description = desc;
+            Priority = priority;
+            User = user;
+            Status = status;
+            DueDate = duedate;
+        }
+
+        public override string ToString()
+        {
+            return TaskName;
+        }
+
+
     }
 }
