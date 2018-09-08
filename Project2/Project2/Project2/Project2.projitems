@@ -59,7 +59,6 @@
       <DependentUpon>TaskScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Services\UserServices.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)View\RegisterPage.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\AddUserViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\BaseTaskViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\BaseUserViewModel.cs" />
