@@ -11,7 +11,7 @@ namespace Project2.ViewModel
     public class RegisterViewModel
     {
         UserServices userServices = new UserServices();
-        
+
         public string Email { get; set; }
 
         public string Password { get; set; }
@@ -24,7 +24,7 @@ namespace Project2.ViewModel
         {
             get
             {
-                return new Command(async () => 
+                return new Command(async () =>
                 {
                     var loggedIn = await userServices.RegisterUserAsync(Email, Password, ConfirmPassword);
 

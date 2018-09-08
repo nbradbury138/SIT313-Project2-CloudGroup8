@@ -4087,7 +4087,7 @@ namespace Project2.Droid
 			
 			// aapt resource value: 0x7f0a0005
 			public const int mr_chooser_title = 2131361797;
-      
+			
 			// aapt resource value: 0x7f0a0006
 			public const int mr_controller_album_art = 2131361798;
 			

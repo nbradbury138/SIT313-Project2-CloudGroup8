@@ -41,11 +41,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\SQLInterface.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\LUPriority.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\LUStatus.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\RegisterViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\SetPasswordViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaskData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\UserData.cs" />
-<<<<<<< HEAD
     <Compile Include="$(MSBuildThisFileDirectory)View\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
@@ -60,25 +57,39 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\TaskScreen.xaml.cs">
       <DependentUpon>TaskScreen.xaml</DependentUpon>
-=======
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Services\UserServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\RegisterPage.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\AddUserViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\BaseTaskViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\BaseUserViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\AddTaskViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\RegisterViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\SetPasswordViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\TaskDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\TaskListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
->>>>>>> 515de539a096d0773710560709f1b3af1e1276f2
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Page1.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\RegisterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Services\" />
+  </ItemGroup>
 </Project>
+

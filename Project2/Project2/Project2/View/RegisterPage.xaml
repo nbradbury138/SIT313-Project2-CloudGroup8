@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Project2.View.RegisterPage"
              xmlns:model="clr-namespace:Project2.ViewModel">
-    
+
     <ContentPage.BindingContext>
         <model:RegisterViewModel/>
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
             <Entry Text="{Binding Email}"
@@ -20,6 +20,7 @@
                    IsPassword="True"/>
             <Button Command="{Binding RegisterCommand}"
                     Text="Register"/>
+            <Label Text="{Binding Message}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
