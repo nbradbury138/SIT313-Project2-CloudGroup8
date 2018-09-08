@@ -9,13 +9,12 @@ namespace Project2
 {
 	public partial class App : Application
 	{
-        public App()
-        {
-            InitializeComponent();
-
-            MainPage = new RegisterPage();
-            //MainPage = new NavigationPage(new Page1());
-        }
+      public App()
+      {
+          InitializeComponent();
+          MainPage = new RegisterPage();
+          //MainPage = new NavigationPage(new Page1());
+      }
 
 		protected override void OnStart ()
 		{
