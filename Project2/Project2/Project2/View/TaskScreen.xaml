@@ -1,44 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Project2.View.TaskScreen">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Project2.View.TaskScreen" xmlns:local="clr-namespace:Project2.ViewModel">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text=""
-                   FontSize="35"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"/>
             <Label Text="Task Name"
-                   FontSize="20"/>
-            <Entry FontSize="20"
+                   FontSize="10"/>
+            <Entry  Text ="{Binding TaskName}"
+                    FontSize="10"
                     />
-            <Editor Text="Description"
-                    FontSize="20"
+            <Label Text="Description"
+                   FontSize="10"/>
+            <Editor 
+                    Text ="{Binding Description}"
+                    FontSize="10"
                     VerticalOptions="CenterAndExpand"
                     />
+            <Label Text="Priority"
+                   FontSize="10"/>
             <Picker Title="Priority"
+                    FontSize="10"
                     VerticalOptions="CenterAndExpand"
                     Margin="10, 0"
-                    ><!--SelectedIndexChanged="OnPickerSelectedIndexChanged">-->
+                    ItemDisplayBinding="{Binding Priority}"
+                    SelectedItem="{Binding Priority}"
+                    >
+                <!--SelectedIndexChanged="OnPickerSelectedIndexChanged">-->
                 <Picker.Items>
                     <x:String>Low</x:String>
                     <x:String>Medium</x:String>
                     <x:String>High</x:String>
                 </Picker.Items>
             </Picker>
+            <Label Text="Status"
+                   FontSize="10"/>
             <Picker Title="Status"
+                    FontSize="10"
                     VerticalOptions="CenterAndExpand"
                     Margin="10, 0"
-                    ><!--SelectedIndexChanged="OnPickerSelectedIndexChanged">-->
+                    ItemDisplayBinding="{Binding Status}"
+                    SelectedItem="{Binding Status}"
+                    >
+                <!--SelectedIndexChanged="OnPickerSelectedIndexChanged">-->
                 <Picker.Items>
                     <x:String>To Do</x:String>
                     <x:String>In Progress</x:String>
                     <x:String>Completed</x:String>
                 </Picker.Items>
             </Picker>
+            <Label Text="Due Date"
+                   FontSize="10"/>
             <DatePicker Format="D"
+                        FontSize="10"
                         VerticalOptions="CenterAndExpand"
-                        Margin="10, 0"/>
+                        Margin="10, 0"
+                        Date="{Binding DueDate}"/>
             <Button Text="Save Changes"
-                    Font="Large"
+                    Command="{Binding UpdateTaskComm}"
+                    Font="small"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
+                    />
+            <Button Text="Delete Task"
+                    Command="{Binding DeleteTaskComm}"
+                    Font="small"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
                     VerticalOptions="CenterAndExpand"

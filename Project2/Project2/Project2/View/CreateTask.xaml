@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="Project2.View.CreateTask">
+             x:Class="Project2.View.CreateTask"
+             xmlns:local="clr-namespace:Project2.ViewModel">
     <ContentPage.Content>
          <StackLayout>
             <Label Text="Create Task"
@@ -10,15 +11,20 @@
                    HorizontalOptions="Center"/>
             <Label Text="Task Name"
                    FontSize="20"/>
-            <Entry FontSize="20"
+            <Entry Text ="{Binding TaskName}"
+                   FontSize="20"
                     />
-            <Editor Text="Description"
+            <Label Text="Description"                 
+                   FontSize="20"/>
+            <Editor Text ="{Binding Description}"
                     FontSize="20"
                     VerticalOptions="CenterAndExpand"
                     />
             <Picker Title="Priority"
                     VerticalOptions="CenterAndExpand"
                     Margin="10, 0"
+                    ItemDisplayBinding="{Binding Priority}"
+                    SelectedItem="{Binding Priority}"
                     ><!--SelectedIndexChanged="OnPickerSelectedIndexChanged">-->
                 <Picker.Items>
                     <x:String>Low</x:String>
@@ -29,6 +35,8 @@
             <Picker Title="Status"
                     VerticalOptions="CenterAndExpand"
                     Margin="10, 0"
+                    ItemDisplayBinding="{Binding Status}"
+                    SelectedItem="{Binding Status}"
                     ><!--SelectedIndexChanged="OnPickerSelectedIndexChanged">-->
                 <Picker.Items>
                     <x:String>To Do</x:String>
@@ -38,12 +46,14 @@
             </Picker>
             <DatePicker Format="D"
                         VerticalOptions="CenterAndExpand"
-                        Margin="10, 0"/>
+                        Margin="10, 0"
+                        Date="{Binding DueDate}"/>
             <Button Text="Create Task"
                     Font="Large"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
                     VerticalOptions="CenterAndExpand"
+                     Command="{Binding AddTaskComm}"
                     />
         </StackLayout>
     </ContentPage.Content>
