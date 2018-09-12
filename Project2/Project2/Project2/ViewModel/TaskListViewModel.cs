@@ -2,9 +2,9 @@
 using System.Windows.Input;
 using Project2.Model;
 using Project2.Data;
-
-
 using Xamarin.Forms;
+using Project2.View;
+using System.Collections.ObjectModel;
 
 namespace Project2.ViewModel
 {
@@ -25,17 +25,17 @@ namespace Project2.ViewModel
 
         void FetchTasks()
         {
-            TaskDataList = taskRepo.GetAllTasks();
+            TaskDataList =  taskRepo.GetAllTasks();
         }
 
         async Task ShowAddTask()
         {
-            //await nav.PushAsync(new Add());
+            await nav.PushAsync(new CreateTask());
         }
 
         async void ShowTaskDetails(int taskId)
-        {
-           // await nav.PushAsync(new Details(taskId));
+        {          
+           await nav.PushAsync(new TaskScreen(taskId));
         }
 
         TaskData selectedTask;

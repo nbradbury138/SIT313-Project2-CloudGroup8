@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Project2.Helpers;
@@ -15,7 +16,9 @@ namespace Project2.ViewModel
         public TaskData task;
         public INavigation nav;
         public TaskDataRepository taskRepo;
-        List<TaskData> taskDataList;
+        private ObservableCollection<TaskData> taskDataList;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         //property for task name
         public string TaskName
@@ -24,7 +27,7 @@ namespace Project2.ViewModel
             set
             {
                 task.TaskName = value;
-                NotifyPropertyChanged("TaskName");
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TaskName"));
             }
         }
 
@@ -84,18 +87,18 @@ namespace Project2.ViewModel
         }
 
         //property for task list
-        public List<TaskData> TaskDataList
+        public ObservableCollection<TaskData> TaskDataList
         {
             get { return taskDataList; }
             set
             {
-                taskDataList = value;
-                NotifyPropertyChanged("TaskDataList");
+                taskDataList = value;               
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TaskDataList"));
             }
         }
 
         #region INotifyPropertyChanged      
-        public event PropertyChangedEventHandler PropertyChanged;
+
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

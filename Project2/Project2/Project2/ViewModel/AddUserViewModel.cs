@@ -29,7 +29,7 @@ namespace Project2.ViewModel
             if (accept)
             {
                 userRepo.InsertUser(user);
-                await nav.PushAsync(new Page1());
+                await nav.PushAsync(new HomePage());
             }
         }
     }
