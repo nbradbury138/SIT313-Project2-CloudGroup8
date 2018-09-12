@@ -20,8 +20,10 @@ Added in TaskDataRepository, DBHelper, iOS and Android Database files worked fur
 Create database/table structures and place in the Model Folder. This includes tables for TaskData, UserData, LUStatus and LUPriority.cs. I also included an interface to be used with the database.
 
 **Commits on 29/9/18** (John Bulauan)
+
 No github commits, wireframe of UI's were created by myself.
 
 **Commits on 07/9/18** (John Bulauan)
+
 Create In-App user interfaces for all screens. This includes; Home, Login, Registration, Task and Create Task Views.
 
