@@ -33,7 +33,7 @@ namespace Project2.Services
             return response.IsSuccessStatusCode;
         }
 
-        /*public async Task LoginAsync(string userName, string password)
+        public async Task LoginAsync(string userName, string password)
         {
             var client = new HttpClient();
 
@@ -51,6 +51,6 @@ namespace Project2.Services
             var content = await response.Content.ReadAsStringAsync();
             JObject jwtDynamic = JsonConvert.DeserializeObject<dynamic>(content);
             var accessToken = jwtDynamic.Value<string>("access_token");
-        }*/
+        }
     }
 }
