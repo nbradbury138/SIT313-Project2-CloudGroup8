@@ -65,6 +65,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\SetPasswordViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\TaskDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\TaskListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\LoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />

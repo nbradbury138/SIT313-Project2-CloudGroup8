@@ -1,1 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?> <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"               xmlns:local="clr-namespace:Project2.View"              x:Class="Project2.View.Registration"              xmlns:model="clr-namespace:Project2.ViewModel">      <ContentPage.BindingContext>         <model:RegisterViewModel/>     </ContentPage.BindingContext>          <ContentPage.Content>         <StackLayout>             <Label Text="Registration"                    FontSize="35"                    FontAttributes="Bold"                    HorizontalOptions="Center"/>             <Entry Text="{Binding Email}"                    Keyboard="Email"                    Placeholder="Enter your email address"                    VerticalOptions="CenterAndExpand"/>             <Entry Text="{Binding Password}"                    Keyboard="Text"                    Placeholder="Enter your password here"                    IsPassword="True"                    VerticalOptions="CenterAndExpand"/>             <Entry Text="{Binding ConfirmPassword}"                    Keyboard="Text"                    Placeholder="Enter your password again"                    IsPassword="true"                    VerticalOptions="CenterAndExpand"/>             <Label Text="{Binding Message}"/>             <Button Text="Register"                     Command="{Binding RegisterCommand}"                     Font="Large"                     FontAttributes="Bold"                     HorizontalOptions="Center"                     VerticalOptions="CenterAndExpand"/>         </StackLayout>     </ContentPage.Content> </ContentPage>  
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Project2.View.Registration"
+             xmlns:model="clr-namespace:Project2.ViewModel">
+
+    <ContentPage.BindingContext>
+        <model:RegisterViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Registration"
+                   FontSize="35"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+            <Entry Text="{Binding Email}"
+                   Keyboard="Email"
+                   Placeholder="Enter your email address"
+                   VerticalOptions="CenterAndExpand"/>
+            <Entry Text="{Binding Password}"
+                   Keyboard="Text"
+                   Placeholder="Enter your password here"
+                   IsPassword="True"
+                   VerticalOptions="CenterAndExpand"/>
+            <Entry Text="{Binding ConfirmPassword}"
+                   Keyboard="Text"
+                   Placeholder="Enter your password again"
+                   IsPassword="true"
+                   VerticalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Message}"/>
+            <Button Text="Register"
+                    Command="{Binding RegisterCommand}"
+                    Font="Large"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

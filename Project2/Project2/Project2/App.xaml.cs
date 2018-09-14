@@ -12,7 +12,7 @@ namespace Project2
       public App()
       {
           InitializeComponent();
-          MainPage = new NavigationPage(new HomePage());
+          MainPage = new NavigationPage(new Login());
           //MainPage = new NavigationPage(new Page1());
       }
 
