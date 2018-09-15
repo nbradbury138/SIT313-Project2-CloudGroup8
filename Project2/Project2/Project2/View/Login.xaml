@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Project2.ViewModel"
              x:Class="Project2.View.Login">
+    <ContentPage.BindingContext>
+        <local:LoginViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Login"
                    FontSize="35"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"/>
-            <Entry Keyboard="Email"
+            <Entry Text="{Binding Email}"
                    Placeholder="Enter your email address"
                    VerticalOptions="CenterAndExpand"/>
-            <Entry Keyboard="Text"
+            <Entry Text="{Binding Password}"
                    Placeholder="Enter your password here"
                    IsPassword="True"
                    VerticalOptions="CenterAndExpand"/>
-            <Button Text="Login"
+            <Button Command="{Binding LoginCommand}"
+                    Text="Login"
                     Font="Large"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
-                    VerticalOptions="CenterAndExpand"
-                    />
+                    VerticalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Message}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
