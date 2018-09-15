@@ -1,6 +1,19 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+**Commits on 15/9/18** (Nathan Bradbury)
+
+Removed User Model as no need for local database side. Changed the usernames in the default data to be email addresses, added in last modified date field for tasks.
+Made changes to allow returning task lists for specific user. Added in application wide property for username. Tested functionality
+
+**Commits on 15/9/18** (John Bulauan)
+
+Register button on login screen working. Transitions to the register xaml page once clicked. New register page pushed to github due to xamarin ide problems "Data is invalid at the root level" Line 1 position 1. Thus a creation of a new register page was made.
+
+**Commits on 07/9/18** (John Bulauan)
+
+Create In-App user interfaces for all screens. This includes; Home, Login, Registration, Task and Create Task Views.
+
 **Commits on 12/9/18** (Nathan Bradbury)
 
 Worked on getting the views to talk to the local database using the MVVM methodology. Worked with the Create Task page, the home page which shows a list of tasks and the Task Screen which shows the task details. I added a delete button to be able to delete the task from within the task itself. I also added in a create button for creating tasks from the home/list page. Completed moderate testing to ensure the functionality worked.
@@ -15,19 +28,17 @@ Tested functionality of the TaskList with a sample view.
 
 Added in TaskDataRepository, DBHelper, iOS and Android Database files worked further on database models, added in default data and checks to see if database exists and if tables/data exist
 
+**Commits on 29/8/18** (John Bulauan)
+
+No github commits, wireframe of UI's were created by myself.
+
 **Commits on 25/8/18** (Nathan Bradbury)
 
 Create database/table structures and place in the Model Folder. This includes tables for TaskData, UserData, LUStatus and LUPriority.cs. I also included an interface to be used with the database.
 
-**Commits on 29/9/18** (John Bulauan)
 
-No github commits, wireframe of UI's were created by myself.
 
-**Commits on 07/9/18** (John Bulauan)
 
-Create In-App user interfaces for all screens. This includes; Home, Login, Registration, Task and Create Task Views.
 
-**Commits on 15/9/18** (John Bulauan)
 
-Register button on login screen working. Transitions to the register xaml page once clicked. New register page pushed to github due to xamarin ide problems "Data is invalid at the root level" Line 1 position 1. Thus a creation of a new register page was made.
 
