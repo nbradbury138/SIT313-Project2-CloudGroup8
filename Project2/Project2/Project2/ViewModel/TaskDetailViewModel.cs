@@ -5,7 +5,7 @@ using Project2.Data;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Project2.View;
-
+using System;
 using Xamarin.Forms;
 
 namespace Project2.ViewModel
@@ -45,6 +45,7 @@ namespace Project2.ViewModel
             bool accept = await Application.Current.MainPage.DisplayAlert("Task Details", "Update Task", "OK", "Cancel");
             if (accept)
             {
+                task.LastModifiedDate = DateTime.Now;
                 taskRepo.UpdateTask(task);
                 await nav.PopAsync();
             }

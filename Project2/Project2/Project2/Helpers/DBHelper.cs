@@ -30,16 +30,6 @@ namespace Project2.Helpers
                 //populate with test data
                 CreateTaskData();
             }
-
-            //create the User Table if needed and populate
-            statement = "SELECT * FROM sqlite_master where type = 'table' and tbl_name = 'UserData'";
-            command = connection.CreateCommand(statement);
-            if (command.ExecuteScalar<string>() == null)
-            {
-                connection.CreateTable<UserData>();
-                //populate with test data
-                CreateUserData();
-            }
         }
 
         #region Task Data Methods
@@ -49,6 +39,15 @@ namespace Project2.Helpers
             List<TaskData> list = (from data in connection.Table<TaskData>()
                                    select data).ToList();
 
+            ObservableCollection<TaskData> taskList = new ObservableCollection<TaskData>(list);
+
+            return taskList;
+        }
+
+        public ObservableCollection<TaskData> GetAllTasksForUser(string user)
+        {
+            List<TaskData> list = (from data in connection.Query<TaskData>("SELECT * FROM TaskData where user = '" + user + "'")
+                                   select data).ToList();
             ObservableCollection<TaskData> taskList = new ObservableCollection<TaskData>(list);
 
             return taskList;
@@ -86,54 +85,16 @@ namespace Project2.Helpers
 
         #endregion Task Data Methods
 
-        #region User Data Methods
-        //get all user data info
-        public List<UserData> GetAllUserData()
-        {
-            return (from data in connection.Table<UserData>()
-                    select data).ToList();
-        }
-
-        //Get Specific User data  
-        public UserData GetUserData(string userName)
-        {
-            return connection.Table<UserData>().FirstOrDefault(t => t.UserName == userName);
-        }
-
-        // Delete all User Data  
-        public void DeleteAllUserData()
-        {
-            connection.DeleteAll<UserData>();
-        }
-
-        // Delete Specific User  
-        public void DeleteUser(int id)
-        {
-            connection.Delete<UserData>(id);
-        }
-
-        // Insert new User  
-        public void InsertUser(UserData user)
-        {
-            connection.Insert(user);
-        }
-
-        // Update User Data  
-        public void UpdateUser(UserData user)
-        {
-            connection.Update(user);
-        }
-
-        #endregion User Data Methods
+       
 
         public void CreateTaskData()
         {
             if(connection.Table<TaskData>().Count() == 0)
             {
-                TaskData newTask1 = new TaskData("Finish Work","I need to finish my work","High","nathan","To Do",Convert.ToDateTime("20/SEP/18"));
-                TaskData newTask2 = new TaskData("Submit Report", "The report on Visual Studio", "Medium", "nathan", "In Progress", Convert.ToDateTime("21/OCT/18"));
-                TaskData newTask3 = new TaskData("File papers", "Have to file all those papers", "Low", "glenn", "Completed", Convert.ToDateTime("15/AUG/18"));
-                TaskData newTask4 = new TaskData("Develop application", "The Task management application needs In Progress", "High", "glenn", "In Progress", Convert.ToDateTime("26/SEP/18"));
+                TaskData newTask1 = new TaskData("Finish Work","I need to finish my work","High","nathan@email.com","To Do",Convert.ToDateTime("20/SEP/18"),DateTime.Now);
+                TaskData newTask2 = new TaskData("Submit Report", "The report on Visual Studio", "Medium", "nathan@email.com", "In Progress", Convert.ToDateTime("21/OCT/18"),DateTime.Now);
+                TaskData newTask3 = new TaskData("File papers", "Have to file all those papers", "Low", "glenn@email.com", "Completed", Convert.ToDateTime("15/AUG/18"),DateTime.Now);
+                TaskData newTask4 = new TaskData("Develop application", "The Task management application needs In Progress", "High", "glenn@email.com", "In Progress", Convert.ToDateTime("26/SEP/18"),DateTime.Now);
 
                 connection.Insert(newTask1);
                 connection.Insert(newTask2);
@@ -141,20 +102,6 @@ namespace Project2.Helpers
                 connection.Insert(newTask4);
 
             }
-        }
-
-        public void CreateUserData()
-        {
-            if (connection.Table<TaskData>().Count() == 0)
-            {
-                UserData newUser1 = new UserData("nathan","nathan");
-                UserData newUser2 = new UserData("glenn", "glenn");
-                UserData newUser3 = new UserData("john", "john");
-
-                connection.Insert(newUser1);
-                connection.Insert(newUser2);
-                connection.Insert(newUser3);
-            }
-        }
+        }   
     }
 }
