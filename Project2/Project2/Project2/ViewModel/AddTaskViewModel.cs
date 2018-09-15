@@ -3,6 +3,8 @@ using System.Windows.Input;
 using Project2.Model;
 using Project2.Data;
 using Project2.View;
+using System;
+using Xamarin.Forms;
 
 
 using Xamarin.Forms;
@@ -28,6 +30,7 @@ namespace Project2.ViewModel
             bool accept = await Application.Current.MainPage.DisplayAlert("Add Task", "Save task details?", "OK", "Cancel");
             if (accept)
             {
+                task.LastModifiedDate = DateTime.Now;
                 taskRepo.InsertTask(task);
                 await nav.PushAsync(new HomePage());
             }
