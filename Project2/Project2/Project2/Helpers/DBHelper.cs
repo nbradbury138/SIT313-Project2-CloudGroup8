@@ -44,6 +44,15 @@ namespace Project2.Helpers
             return taskList;
         }
 
+        public ObservableCollection<TaskData> GetAllTasksForUser(string user)
+        {
+            List<TaskData> list = (from data in connection.Query<TaskData>("SELECT * FROM TaskData where user = '" + user + "'")
+                                   select data).ToList();
+            ObservableCollection<TaskData> taskList = new ObservableCollection<TaskData>(list);
+
+            return taskList;
+        }
+
         //Get Specific Task data  
         public TaskData GetTaskData(int id)
         {

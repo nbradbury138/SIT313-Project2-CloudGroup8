@@ -13,7 +13,6 @@ namespace Project2
       {
           InitializeComponent();
           MainPage = new NavigationPage(new Login());
-          //MainPage = new NavigationPage(new Page1());
       }
 
 		protected override void OnStart ()

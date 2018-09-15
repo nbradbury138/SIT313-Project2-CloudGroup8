@@ -25,7 +25,10 @@ namespace Project2.ViewModel
 
         void FetchTasks()
         {
-            TaskDataList =  taskRepo.GetAllTasks();
+            //get user from application
+            string user = Application.Current.Properties["username"].ToString();
+
+            TaskDataList =  taskRepo.GetAllTasksForUser(user);
         }
 
         async Task ShowAddTask()
