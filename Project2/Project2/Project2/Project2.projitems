@@ -61,16 +61,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\SetPasswordViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\TaskDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\TaskListViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)View\RegisterPage.xaml.cs">
-      <DependentUpon>RegisterPage.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\RegisterPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\LoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />

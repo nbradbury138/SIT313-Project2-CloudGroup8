@@ -27,3 +27,7 @@ No github commits, wireframe of UI's were created by myself.
 
 Create In-App user interfaces for all screens. This includes; Home, Login, Registration, Task and Create Task Views.
 
+**Commits on 15/9/18** (John Bulauan)
+
+Register button on login screen working. Transitions to the register xaml page once clicked. New register page pushed to github due to xamarin ide problems "Data is invalid at the root level" Line 1 position 1. Thus a creation of a new register page was made.
+
