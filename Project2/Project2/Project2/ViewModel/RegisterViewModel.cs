@@ -1,6 +1,7 @@
 ﻿using Project2.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Windows.Input;
@@ -8,7 +9,7 @@ using Xamarin.Forms;
 
 namespace Project2.ViewModel
 {
-    public class RegisterViewModel
+    public class RegisterViewModel : INotifyPropertyChanged
     {
         UserServices userServices = new UserServices();
 
@@ -26,14 +27,28 @@ namespace Project2.ViewModel
             {
                 return new Command(async () =>
                 {
-                    var loggedIn = await userServices.RegisterUserAsync(Email, Password, ConfirmPassword);
+                    var registerUser = await userServices.RegisterUserAsync(Email, Password, ConfirmPassword);
 
-                    if (loggedIn)
+                    if (registerUser.SuccessStatus)
+                    {
                         Message = "Registration Successful";
+                        var loggedIn = await userServices.LoginAsync(Email, Password);
+
+                        if (loggedIn.SuccessStatus)
+                        {
+                            var accessToken = loggedIn.AccessToken;
+                        }
+                        else
+                        {
+                            Message = loggedIn.ErrorMessage;
+                        }
+                    }
                     else
                         Message = "Registration Failed";
                 });
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
