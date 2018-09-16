@@ -1,12 +1,15 @@
 using Project2.Services;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Project2.View;
 
 namespace Project2.ViewModel
 {
     class LoginViewModel
     {
         UserServices userServices = new UserServices();
+
+        public INavigation navigation;
 
         public string Email { get; set; }
 
@@ -15,6 +18,11 @@ namespace Project2.ViewModel
         public string ConfirmPassword { get; set; }
 
         public string Message { get; set; }
+
+        public LoginViewModel(INavigation nav)
+        {
+            navigation = nav;
+        }
 
         public ICommand LoginCommand
         {
@@ -34,6 +42,17 @@ namespace Project2.ViewModel
                     {
                         Message = loggedIn.ErrorMessage;
                     }
+                });
+            }
+        }
+
+        public ICommand RegisterCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await navigation.PushAsync(new Registration());
                 });
             }
         }
