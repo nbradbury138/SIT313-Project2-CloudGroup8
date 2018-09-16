@@ -33,6 +33,11 @@ namespace Project2.Data
             return dbhelp.GetAllTasks();
         }
 
+        public ObservableCollection<TaskData> GetAllTasksForUser(string user)
+        {
+            return dbhelp.GetAllTasksForUser(user);
+        }
+
         public TaskData GetTask(int taskId)
         {
             return dbhelp.GetTaskData(taskId);
