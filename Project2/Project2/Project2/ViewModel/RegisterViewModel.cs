@@ -6,12 +6,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Project2.View;
 
 namespace Project2.ViewModel
 {
     public class RegisterViewModel : INotifyPropertyChanged
     {
         UserServices userServices = new UserServices();
+        public INavigation navigation;
 
         public string Email { get; set; }
 
@@ -20,6 +22,11 @@ namespace Project2.ViewModel
         public string ConfirmPassword { get; set; }
 
         public string Message { get; set; }
+
+        public RegisterViewModel(INavigation nav)
+        {
+            navigation = nav;
+        }
 
         public ICommand RegisterCommand
         {
@@ -37,6 +44,7 @@ namespace Project2.ViewModel
                         if (loggedIn.SuccessStatus)
                         {
                             var accessToken = loggedIn.AccessToken;
+                            await navigation.PushAsync(new HomePage());
                         }
                         else
                         {
