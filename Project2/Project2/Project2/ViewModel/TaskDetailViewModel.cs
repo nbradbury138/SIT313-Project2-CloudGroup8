@@ -2,8 +2,10 @@
 using System.Windows.Input;
 using Project2.Model;
 using Project2.Data;
-
-
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using Project2.View;
+using System;
 using Xamarin.Forms;
 
 namespace Project2.ViewModel
@@ -43,6 +45,7 @@ namespace Project2.ViewModel
             bool accept = await Application.Current.MainPage.DisplayAlert("Task Details", "Update Task", "OK", "Cancel");
             if (accept)
             {
+                task.LastModifiedDate = DateTime.Now;
                 taskRepo.UpdateTask(task);
                 await nav.PopAsync();
             }
@@ -55,7 +58,7 @@ namespace Project2.ViewModel
             if (accept)
             {
                 taskRepo.DeleteTask(task.Id);
-                await nav.PopAsync();
+                await nav.PushAsync(new HomePage());
             }
         }
     }

@@ -12,6 +12,7 @@
                    FontSize="35"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"/>
+
             <Entry Text="{Binding Email}"
                    Placeholder="Enter your email address"
                    VerticalOptions="CenterAndExpand"/>
@@ -26,6 +27,14 @@
                     HorizontalOptions="Center"
                     VerticalOptions="CenterAndExpand"/>
             <Label Text="{Binding Message}"/>
+            <Button Text="Register"
+                    Command="{Binding RegPage}"
+                    Font="Large"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
+

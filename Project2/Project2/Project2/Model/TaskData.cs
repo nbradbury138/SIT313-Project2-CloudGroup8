@@ -16,6 +16,7 @@ namespace Project2.Model
         public string User { get; set; }
         public string Status { get; set; }
         public DateTime DueDate { get; set; }
+        public DateTime LastModifiedDate { get; set; }
 
 
         public TaskData()
@@ -23,7 +24,7 @@ namespace Project2.Model
 
         }
 
-        public TaskData(string name, string desc, string priority, string user, string status, DateTime duedate)
+        public TaskData(string name, string desc, string priority, string user, string status, DateTime duedate,DateTime lastModifiedDate)
         {
             TaskName = name;
             Description = desc;
@@ -31,6 +32,7 @@ namespace Project2.Model
             User = user;
             Status = status;
             DueDate = duedate;
+            LastModifiedDate = lastModifiedDate;
         }
 
         public override string ToString()

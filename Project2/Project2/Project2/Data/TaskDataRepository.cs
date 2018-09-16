@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Project2.Helpers;
 using Project2.Model;
 using Project2.Interfaces;
+using System.Collections.ObjectModel;
+
 
 namespace Project2.Data
 {
@@ -26,9 +28,14 @@ namespace Project2.Data
             dbhelp.DeleteAllTasks();
         }
 
-        public List<TaskData> GetAllTasks()
+        public ObservableCollection<TaskData> GetAllTasks()
         {
             return dbhelp.GetAllTasks();
+        }
+
+        public ObservableCollection<TaskData> GetAllTasksForUser(string user)
+        {
+            return dbhelp.GetAllTasksForUser(user);
         }
 
         public TaskData GetTask(int taskId)

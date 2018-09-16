@@ -1,4 +1,4 @@
-﻿using Project2.Services;
+using Project2.Services;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -27,6 +27,8 @@ namespace Project2.ViewModel
                     if (loggedIn.SuccessStatus)
                     {
                         var accessToken = loggedIn.AccessToken;
+                        Application.Current.Properties["username"] = Email;
+                        await navigation.PushAsync(new HomePage());
                     }
                     else
                     {
@@ -37,3 +39,4 @@ namespace Project2.ViewModel
         }
     }
 }
+
