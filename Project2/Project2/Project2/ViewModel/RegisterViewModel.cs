@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -14,12 +15,20 @@ namespace Project2.ViewModel
         UserServices userServices = new UserServices();
 
         public string Email { get; set; }
-
         public string Password { get; set; }
-
         public string ConfirmPassword { get; set; }
 
-        public string Message { get; set; }
+        public string Message
+        {
+            get { return errorMessages; }
+            set
+            {
+                errorMessages = value;
+                NotifyPropertyChanged("Message");
+            }
+        }
+
+        private string errorMessages { get; set; }
 
         public ICommand RegisterCommand
         {
@@ -44,11 +53,19 @@ namespace Project2.ViewModel
                         }
                     }
                     else
-                        Message = "Registration Failed";
+                        Message = "Registration Failed - Please Check Username (must be unique) and Password (Must contain a Capital and Symbol)";
                 });
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        #region INotifyPropertyChanged      
+
+        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
     }
 }

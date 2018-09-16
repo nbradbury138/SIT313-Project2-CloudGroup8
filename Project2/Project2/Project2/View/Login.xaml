@@ -12,7 +12,6 @@
                    FontSize="35"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"/>
-
             <Entry Text="{Binding Email}"
                    Placeholder="Enter your email address"
                    VerticalOptions="CenterAndExpand"/>

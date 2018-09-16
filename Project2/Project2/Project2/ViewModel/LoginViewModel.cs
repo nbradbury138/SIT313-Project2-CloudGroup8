@@ -1,4 +1,5 @@
 using Project2.Services;
+using Project2.View;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -9,12 +10,19 @@ namespace Project2.ViewModel
         UserServices userServices = new UserServices();
 
         public string Email { get; set; }
-
         public string Password { get; set; }
-
         public string ConfirmPassword { get; set; }
-
         public string Message { get; set; }
+        public INavigation Navigation { get; set; }
+
+        public LoginViewModel()
+        {
+        }
+
+        public LoginViewModel(INavigation nav)
+        {
+            Navigation = nav;
+        }
 
         public ICommand LoginCommand
         {
@@ -28,7 +36,10 @@ namespace Project2.ViewModel
                     {
                         var accessToken = loggedIn.AccessToken;
                         Application.Current.Properties["username"] = Email;
-                        await navigation.PushAsync(new HomePage());
+                        if (Navigation != null)
+                            await Navigation.PushAsync(new HomePage());
+                        else
+                            new HomePage();
                     }
                     else
                     {
