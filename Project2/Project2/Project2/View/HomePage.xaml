@@ -9,7 +9,19 @@
                    FontSize="35"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"/>
-            <ListView x:Name="TaskListView" HasUnevenRows="true" Grid.Row="1" SeparatorColor="Black" ItemsSource="{Binding TaskDataList}" SelectedItem="{Binding SelectedTask, Mode=TwoWay}"/>
+            <ListView x:Name="TaskListView" 
+                      HasUnevenRows="true" Grid.Row="1" 
+                      SeparatorColor="Black" 
+                      ItemsSource="{Binding TaskDataList}" 
+                      SelectedItem="{Binding SelectedTask, 
+                      Mode=TwoWay}"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding TaskName}" TextColor="Black" Detail="{Binding TaskDescription}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <Button Text="Create Task"
                     Command="{Binding AddTaskComm}"
                     Font="small"
