@@ -12,27 +12,23 @@ namespace Project2.Services
 {
     public class DataServices
     {
-        public async Task<TaskData> GetTask(string username)
+        public async Task<List<TaskData>> GetTask(string username, string accesstoken)
         {
-            var returnValue = new TaskData();
+            var returnValue = new List<TaskData>();
             var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accesstoken);
 
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                response = await client.GetAsync(string.Format("https://sit313apiserver.azurewebsites.net/api/Task/{0}", username));
+                var json = await client.GetStringAsync(string.Format("https://sit313apiserver.azurewebsites.net/api/Task/"));
+                returnValue = JsonConvert.DeserializeObject<List<TaskData>>(json);
             }
             catch (Exception ex)
             {
-                returnValue.SuccessStatus = false;
-                returnValue.ErrorMessage = ex.ToString();
                 return returnValue;
             }
-
-            returnValue.SuccessStatus = response.IsSuccessStatusCode;
-            if (!returnValue.SuccessStatus)
-                returnValue.ErrorMessage = response.ReasonPhrase;
 
             return returnValue;
         }
