@@ -4,6 +4,7 @@ using Project2.Model;
 using Project2.Data;
 using Xamarin.Forms;
 using Project2.View;
+using Project2.Services;
 using System.Collections.ObjectModel;
 
 namespace Project2.ViewModel
@@ -26,7 +27,8 @@ namespace Project2.ViewModel
         void FetchTasks()
         {
             //get user from application
-            string user = Application.Current.Properties["username"].ToString();
+            
+            string user = SettingServices.Username;
 
             TaskDataList =  taskRepo.GetAllTasksForUser(user);
         }

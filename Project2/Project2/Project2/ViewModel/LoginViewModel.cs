@@ -13,7 +13,6 @@ namespace Project2.ViewModel
         UserServices userServices = new UserServices();
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public INavigation navigation;
 
         public string Email { get; set; }
         public string Password { get; set; }
@@ -38,10 +37,6 @@ namespace Project2.ViewModel
             Navigation = nav;
         }
 
-        public LoginViewModel(INavigation nav)
-        {
-            navigation = nav;
-        }
 
         public ICommand LoginCommand
         {
@@ -79,7 +74,7 @@ namespace Project2.ViewModel
             {
                 return new Command(async () =>
                 {
-                    await navigation.PushAsync(new Registration());
+                    await Navigation.PushAsync(new Registration());
                 });
             }
         }

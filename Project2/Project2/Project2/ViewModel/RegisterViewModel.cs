@@ -15,7 +15,6 @@ namespace Project2.ViewModel
     public class RegisterViewModel : INotifyPropertyChanged
     {
         UserServices userServices = new UserServices();
-        public INavigation navigation;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -43,11 +42,6 @@ namespace Project2.ViewModel
         public RegisterViewModel(INavigation nav)
         {
             Navigation = nav;
-        }
-
-        public RegisterViewModel(INavigation nav)
-        {
-            navigation = nav;
         }
 
         public ICommand RegisterCommand

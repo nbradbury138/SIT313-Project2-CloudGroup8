@@ -5,6 +5,7 @@ using Project2.Data;
 using Project2.View;
 using System;
 using Xamarin.Forms;
+using Project2.Services;
 
 namespace Project2.ViewModel
 {
@@ -27,7 +28,7 @@ namespace Project2.ViewModel
             bool accept = await Application.Current.MainPage.DisplayAlert("Add Task", "Save task details?", "OK", "Cancel");
             if (accept)
             {
-                task.User = Application.Current.Properties["username"].ToString();
+                task.User = SettingServices.Username;
                 task.LastModifiedDate = DateTime.Now;
                 taskRepo.InsertTask(task);
                 await nav.PushAsync(new HomePage());
