@@ -1,4 +1,5 @@
 ﻿using Project2.Services;
+using Project2.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,8 @@ namespace Project2.ViewModel
     public class RegisterViewModel : INotifyPropertyChanged
     {
         UserServices userServices = new UserServices();
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public string Email { get; set; }
         public string Password { get; set; }
@@ -29,6 +32,16 @@ namespace Project2.ViewModel
         }
 
         private string errorMessages { get; set; }
+        public INavigation Navigation { get; set; }
+
+        public RegisterViewModel()
+        {
+        }
+
+        public RegisterViewModel(INavigation nav)
+        {
+            Navigation = nav;
+        }
 
         public ICommand RegisterCommand
         {
@@ -45,7 +58,16 @@ namespace Project2.ViewModel
 
                         if (loggedIn.SuccessStatus)
                         {
-                            var accessToken = loggedIn.AccessToken;
+                            //var accessToken = loggedIn.AccessToken;
+                            SettingServices.Username = Email;
+                            SettingServices.Password = Password;
+                            SettingServices.AccessToken = loggedIn.AccessToken;
+                            SettingServices.AccessTokenExpirationDate = loggedIn.ExpirationTime;
+
+                            if (Navigation != null)
+                                await Navigation.PushAsync(new HomePage());
+                            else
+                                new HomePage();
                         }
                         else
                         {
@@ -57,8 +79,6 @@ namespace Project2.ViewModel
                 });
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         #region INotifyPropertyChanged      
 

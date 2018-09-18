@@ -10,6 +10,7 @@ namespace Project2.Model
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+        public int ServerId { get; set; }
         public string TaskName { get; set; }
         public string Description { get; set; }
         public string Priority { get; set; }

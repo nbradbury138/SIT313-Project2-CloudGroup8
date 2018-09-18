@@ -14,6 +14,7 @@ namespace ProjectWebServer.Models
         public string User { get; set; }
         public string Status { get; set; }
         public DateTime DueDate { get; set; }
+        public DateTime LastModifiedDate { get; set; }
 
 
         public TaskModel()
@@ -21,7 +22,7 @@ namespace ProjectWebServer.Models
 
         }
 
-        public TaskModel(string name, string desc, string priority, string user, string status, DateTime duedate)
+        public TaskModel(string name, string desc, string priority, string user, string status, DateTime duedate, DateTime lastModified)
         {
             TaskName = name;
             Description = desc;
@@ -29,6 +30,7 @@ namespace ProjectWebServer.Models
             User = user;
             Status = status;
             DueDate = duedate;
+            LastModifiedDate = lastModified;
         }
 
         public override string ToString()

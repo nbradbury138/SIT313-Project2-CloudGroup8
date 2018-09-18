@@ -1,5 +1,7 @@
 using Project2.Services;
 using Project2.View;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -9,10 +11,20 @@ namespace Project2.ViewModel
     {
         UserServices userServices = new UserServices();
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public string Email { get; set; }
         public string Password { get; set; }
-        public string ConfirmPassword { get; set; }
-        public string Message { get; set; }
+        public string Message
+        {
+            get { return errorMessages; }
+            set
+            {
+                errorMessages = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Message"));
+            }
+        }
+        private string errorMessages { get; set; }
         public INavigation Navigation { get; set; }
 
         public LoginViewModel()
@@ -34,8 +46,13 @@ namespace Project2.ViewModel
 
                     if (loggedIn.SuccessStatus)
                     {
-                        var accessToken = loggedIn.AccessToken;
-                        Application.Current.Properties["username"] = Email;
+                        SettingServices.Username = Email;
+                        SettingServices.Password = Password;
+                        SettingServices.AccessToken = loggedIn.AccessToken;
+                        SettingServices.AccessTokenExpirationDate = loggedIn.ExpirationTime;
+
+                        // var accessToken = loggedIn.AccessToken;
+                        // Application.Current.Properties["username"] = Email;
                         if (Navigation != null)
                             await Navigation.PushAsync(new HomePage());
                         else
