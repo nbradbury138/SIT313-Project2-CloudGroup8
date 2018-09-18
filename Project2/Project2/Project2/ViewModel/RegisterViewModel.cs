@@ -28,7 +28,7 @@ namespace Project2.ViewModel
             set
             {
                 errorMessages = value;
-                NotifyPropertyChanged("Message");
+                NotifyPropertyChanged();
             }
         }
 

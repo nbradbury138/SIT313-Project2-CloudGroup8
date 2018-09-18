@@ -8,7 +8,7 @@ using Project2.View;
 
 namespace Project2.ViewModel
 {
-    class LoginViewModel
+    class LoginViewModel : INotifyPropertyChanged
     {
         UserServices userServices = new UserServices();
 
@@ -22,7 +22,7 @@ namespace Project2.ViewModel
             set
             {
                 errorMessages = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Message"));
+                NotifyPropertyChanged();
             }
         }
         private string errorMessages { get; set; }
@@ -77,6 +77,11 @@ namespace Project2.ViewModel
                     await Navigation.PushAsync(new Registration());
                 });
             }
+        }
+
+        protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
