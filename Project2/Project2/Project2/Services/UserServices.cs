@@ -71,8 +71,9 @@ namespace Project2.Services
                 var content = await response.Content.ReadAsStringAsync();
                 JObject jwtDynamic = JsonConvert.DeserializeObject<dynamic>(content);
                 var accessToken = jwtDynamic.Value<string>("access_token");
+                var accessTime = jwtDynamic.Value<DateTime>(".expires");
 
-                if(string.IsNullOrEmpty(accessToken))
+                if (string.IsNullOrEmpty(accessToken))
                 {
                     returnValue.SuccessStatus = false;
                     returnValue.ErrorMessage = "Something went wrong - Empty Access Token";
@@ -81,6 +82,7 @@ namespace Project2.Services
                 {
                     returnValue.SuccessStatus = true;
                     returnValue.AccessToken = accessToken;
+                    returnValue.ExpirationTime = accessTime;
                 }
             }
             else
@@ -103,6 +105,7 @@ namespace Project2.Services
             public bool SuccessStatus;
             public string ErrorMessage;
             public string AccessToken;
+            public DateTime ExpirationTime;
         }
     }
 }

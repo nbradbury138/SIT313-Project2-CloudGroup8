@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using SQLite;
+using System.Linq;
+using System.Web;
 
-namespace Project2.Model
+namespace ProjectWebServer.Models
 {
-    [Table("TaskData")]
-    public class TaskData
+    public class TaskModel
     {
-        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public int ServerId { get; set; }
         public string TaskName { get; set; }
         public string Description { get; set; }
         public string Priority { get; set; }
@@ -20,12 +17,12 @@ namespace Project2.Model
         public DateTime LastModifiedDate { get; set; }
 
 
-        public TaskData()
+        public TaskModel()
         {
 
         }
 
-        public TaskData(string name, string desc, string priority, string user, string status, DateTime duedate,DateTime lastModifiedDate)
+        public TaskModel(string name, string desc, string priority, string user, string status, DateTime duedate, DateTime lastModified)
         {
             TaskName = name;
             Description = desc;
@@ -33,14 +30,12 @@ namespace Project2.Model
             User = user;
             Status = status;
             DueDate = duedate;
-            LastModifiedDate = lastModifiedDate;
+            LastModifiedDate = lastModified;
         }
 
         public override string ToString()
         {
             return TaskName;
         }
-
-
     }
 }

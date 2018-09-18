@@ -35,6 +35,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\DBHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\SQLInterface.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaskData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\DataServices.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\SettingServices.cs" />
+    <!-- <Compile Include="$(MSBuildThisFileDirectory)View\Registration.xaml.cs">
+      <DependentUpon>Registration.xaml</DependentUpon>
+    </Compile> -->
     <Compile Include="$(MSBuildThisFileDirectory)View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -60,7 +65,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\TaskListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Services\" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\LoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
