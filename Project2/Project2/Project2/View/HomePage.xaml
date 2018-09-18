@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="Project2.View.HomePage"
-             xmlns:local="clr-namespace:Project2.ViewModel">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Project2.ViewModel"
+             x:Class="Project2.View.HomePage">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Tasks"
                    FontSize="35"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"/>
-            <ListView x:Name="TaskListView" HasUnevenRows="true" Grid.Row="1" SeparatorColor="Black" ItemsSource="{Binding TaskDataList}" SelectedItem="{Binding SelectedTask, Mode=TwoWay}"/>
+            <ListView x:Name="TaskListView" 
+                      HasUnevenRows="true" Grid.Row="1" 
+                      SeparatorColor="Black" 
+                      ItemsSource="{Binding TaskDataList}" 
+                      SelectedItem="{Binding SelectedTask, 
+                      Mode=TwoWay}"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding TaskName}" TextColor="Black" Detail="{Binding TaskDescription}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <Button Text="Create Task"
                     Command="{Binding AddTaskComm}"
                     Font="small"
