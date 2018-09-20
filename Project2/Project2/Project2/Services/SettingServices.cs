@@ -71,5 +71,16 @@ namespace Project2.Services
                 AppSettings.AddOrUpdateValue("LastSynchronisationTime", DateTime.UtcNow);
             }
         }
+        public static string Connected
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("Connected", "");
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("Connected", value);
+            }
+        }
     }
 }

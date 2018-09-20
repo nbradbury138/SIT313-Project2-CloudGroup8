@@ -22,7 +22,8 @@ namespace Project2.Model
 
         public TaskData()
         {
-
+            DueDate = DateTime.Now;
+            LastModifiedDate = DateTime.Now;
         }
 
         public TaskData(string name, string desc, string priority, string user, string status, DateTime duedate,DateTime lastModifiedDate)

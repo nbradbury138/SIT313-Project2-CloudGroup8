@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Project2.View;
-using System;
+using Plugin.Connectivity;
 
 namespace Project2.ViewModel
 {
@@ -26,6 +26,7 @@ namespace Project2.ViewModel
                 NotifyPropertyChanged();
             }
         }
+
         private string errorMessages { get; set; }
         public INavigation Navigation { get; set; }
 
@@ -37,7 +38,6 @@ namespace Project2.ViewModel
         {
             Navigation = nav;
         }
-
 
         public ICommand LoginCommand
         {

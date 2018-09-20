@@ -6,6 +6,7 @@ using Project2.View;
 using System;
 using Xamarin.Forms;
 using Project2.Services;
+using Plugin.Connectivity;
 
 namespace Project2.ViewModel
 {
@@ -31,6 +32,11 @@ namespace Project2.ViewModel
                 task.User = SettingServices.Username;
                 task.LastModifiedDate = DateTime.Now;
                 taskRepo.InsertTask(task);
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    await DataServices.Synchronise();
+                    SettingServices.LastSynchronisationTime = DateTime.Now;
+                }
                 await nav.PushAsync(new HomePage());
             }
         }
