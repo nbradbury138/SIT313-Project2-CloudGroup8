@@ -20,16 +20,16 @@
                    Placeholder="Enter your password again"
                    IsPassword="true"
                    VerticalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Message}"
+                   FontSize="16"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
             <Button Command="{Binding RegisterCommand}"
                     Text="Register"
                     Font="Large"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
                     VerticalOptions="CenterAndExpand"/>
-            <Label Text="{Binding Message}"
-                   FontSize="35"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

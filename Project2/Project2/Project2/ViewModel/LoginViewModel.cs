@@ -9,12 +9,11 @@ using Plugin.Connectivity;
 
 namespace Project2.ViewModel
 {
-    class LoginViewModel
+    class LoginViewModel : INotifyPropertyChanged
     {
         UserServices userServices = new UserServices();
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public INavigation navigation;
 
         public string Email { get; set; }
         public string Password { get; set; }
@@ -24,7 +23,7 @@ namespace Project2.ViewModel
             set
             {
                 errorMessages = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Message"));
+                NotifyPropertyChanged();
             }
         }
 
@@ -76,9 +75,14 @@ namespace Project2.ViewModel
             {
                 return new Command(async () =>
                 {
-                    await navigation.PushAsync(new Registration());
+                    await Navigation.PushAsync(new Registration());
                 });
             }
+        }
+
+        protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

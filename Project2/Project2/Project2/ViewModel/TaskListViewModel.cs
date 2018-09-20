@@ -6,6 +6,8 @@ using Plugin.Connectivity;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
+
 
 namespace Project2.ViewModel
 {
