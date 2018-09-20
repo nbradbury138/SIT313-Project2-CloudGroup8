@@ -26,6 +26,7 @@
               FontSize="35"
               FontAttributes="Bold"
               HorizontalOptions="Center"/>
+            <Label Text="{Binding connection}" />
             <Button Text="Register"
                     Command="{Binding RegisterCommand}"
                     Font="Large"

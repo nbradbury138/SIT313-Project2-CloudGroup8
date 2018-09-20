@@ -1,10 +1,11 @@
-﻿using System.Threading.Tasks;
-using System.Windows.Input;
-using Project2.Model;
+﻿using Project2.Model;
 using Project2.Data;
-using Xamarin.Forms;
 using Project2.View;
-using System.Collections.ObjectModel;
+using Project2.Services;
+using Plugin.Connectivity;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Project2.ViewModel
 {
@@ -20,15 +21,10 @@ namespace Project2.ViewModel
 
             AddTaskComm = new Command(async () => await ShowAddTask());
 
-            FetchTasks();
-        }
-
-        void FetchTasks()
-        {
             //get user from application
-            string user = Application.Current.Properties["username"].ToString();
-
-            TaskDataList =  taskRepo.GetAllTasksForUser(user);
+            if (CrossConnectivity.Current.IsConnected)
+                DataServices.Synchronise();
+            TaskDataList = taskRepo.GetAllTasksForUser(SettingServices.Username);
         }
 
         async Task ShowAddTask()

@@ -1,10 +1,6 @@
-﻿
-using System.Collections.Generic;
-using Project2.Helpers;
+﻿using Project2.Helpers;
 using Project2.Model;
-using Project2.Interfaces;
 using System.Collections.ObjectModel;
-
 
 namespace Project2.Data
 {

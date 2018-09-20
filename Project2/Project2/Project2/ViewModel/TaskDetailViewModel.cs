@@ -7,6 +7,8 @@ using System.ComponentModel;
 using Project2.View;
 using System;
 using Xamarin.Forms;
+using Plugin.Connectivity;
+using Project2.Services;
 
 namespace Project2.ViewModel
 {
@@ -47,6 +49,11 @@ namespace Project2.ViewModel
             {
                 task.LastModifiedDate = DateTime.Now;
                 taskRepo.UpdateTask(task);
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    await DataServices.Synchronise();
+                    SettingServices.LastSynchronisationTime = DateTime.Now;
+                }
                 await nav.PopAsync();
             }
         }
@@ -57,8 +64,16 @@ namespace Project2.ViewModel
             bool accept = await Application.Current.MainPage.DisplayAlert("Task Details", "Delete Task", "OK", "Cancel");
             if (accept)
             {
-                taskRepo.DeleteTask(task.Id);
-                await nav.PushAsync(new HomePage());
+                if (!CrossConnectivity.Current.IsConnected)
+                    await Application.Current.MainPage.DisplayAlert("Error", "You must be connected to the Internet to delete a task", "OK", "Cancel");
+                else
+                {
+                    taskRepo.DeleteTask(task.Id);
+
+                    await DataServices.Synchronise();
+                    SettingServices.LastSynchronisationTime = DateTime.Now;
+                    await nav.PushAsync(new HomePage());
+                }
             }
         }
     }
