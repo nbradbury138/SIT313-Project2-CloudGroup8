@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Project2.View;
 using Plugin.Connectivity;
+using System;
 
 namespace Project2.ViewModel
 {
