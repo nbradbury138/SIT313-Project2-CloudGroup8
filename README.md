@@ -2,16 +2,24 @@
 
 Project 2
 
+Project Members - Nathan Bradbury, John Bualauan and Glenn Prince
+
 **Description:**
 
 This application has been created for Project 2 of SIT313 and is based on the premise of a Task Management application. The platform the applciaiton has been built on is Xamarin allowing use for both iOS and Android. The application is designed to allow users to register and login to the applicaiton, view a list of tasks and create, update and delete tasks. The key features implemented are as follows:
 
 Security
+
 API Usage
+
 Synchonisation
+
 Database Use
+
 MVVM methodology
+
 Interfaces
+
 Offline mode
 
 **Installation:**
