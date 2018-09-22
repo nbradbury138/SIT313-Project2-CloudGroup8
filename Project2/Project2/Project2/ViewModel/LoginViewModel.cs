@@ -9,12 +9,11 @@ using Plugin.Connectivity;
 
 namespace Project2.ViewModel
 {
-    class LoginViewModel
+    class LoginViewModel : INotifyPropertyChanged
     {
         UserServices userServices = new UserServices();
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public INavigation navigation;
 
         public string Email { get; set; }
         public string Password { get; set; }
@@ -24,7 +23,7 @@ namespace Project2.ViewModel
             set
             {
                 errorMessages = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Message"));
+                NotifyPropertyChanged();
             }
         }
 
@@ -46,25 +45,32 @@ namespace Project2.ViewModel
             {
                 return new Command(async () =>
                 {
-                    var loggedIn = await userServices.LoginAsync(Email, Password);
-
-                    if (loggedIn.SuccessStatus)
+                    try
                     {
-                        SettingServices.Username = Email;
-                        SettingServices.Password = Password;
-                        SettingServices.AccessToken = loggedIn.AccessToken;
-                        SettingServices.AccessTokenExpirationDate = loggedIn.ExpirationTime;
+                        var loggedIn = await userServices.LoginAsync(Email, Password);
 
-                        // var accessToken = loggedIn.AccessToken;
-                        // Application.Current.Properties["username"] = Email;
-                        if (Navigation != null)
-                            await Navigation.PushAsync(new HomePage());
+                        if (loggedIn.SuccessStatus)
+                        {
+                            SettingServices.Username = Email;
+                            SettingServices.Password = Password;
+                            SettingServices.AccessToken = loggedIn.AccessToken;
+                            SettingServices.AccessTokenExpirationDate = loggedIn.ExpirationTime;
+
+                            // var accessToken = loggedIn.AccessToken;
+                            // Application.Current.Properties["username"] = Email;
+                            if (Navigation != null)
+                                await Navigation.PushAsync(new HomePage());
+                            else
+                                new HomePage();
+                        }
                         else
-                            new HomePage();
+                        {
+                            Message = loggedIn.ErrorMessage;
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        Message = loggedIn.ErrorMessage;
+                        Message = ex.ToString();
                     }
                 });
             }
@@ -76,9 +82,14 @@ namespace Project2.ViewModel
             {
                 return new Command(async () =>
                 {
-                    await navigation.PushAsync(new Registration());
+                    await Navigation.PushAsync(new Registration());
                 });
             }
+        }
+
+        protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

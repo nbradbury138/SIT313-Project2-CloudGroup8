@@ -14,7 +14,6 @@ namespace Project2.ViewModel
     public class RegisterViewModel : INotifyPropertyChanged
     {
         UserServices userServices = new UserServices();
-        public INavigation navigation;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -28,7 +27,7 @@ namespace Project2.ViewModel
             set
             {
                 errorMessages = value;
-                NotifyPropertyChanged("Message");
+                NotifyPropertyChanged();
             }
         }
 

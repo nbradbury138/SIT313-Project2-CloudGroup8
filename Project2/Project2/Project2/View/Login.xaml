@@ -16,6 +16,10 @@
                    Placeholder="Enter your password here"
                    IsPassword="True"
                    VerticalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Message}"
+              FontSize="16"
+              FontAttributes="Bold"
+              HorizontalOptions="Center"/>
             <Button Command="{Binding LoginCommand}"
                     Text="Login"
                     Font="Large"
