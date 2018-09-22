@@ -1,5 +1,4 @@
-﻿using ProjectWebServer.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -10,20 +9,25 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using ProjectWebServer.Models;
+using SIT313Deploy.Models;
 
-namespace ProjectWebServer.Controllers
+namespace SIT313Deploy.Controllers
 {
     public class TaskModelsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Task
+        [Authorize]
         public IQueryable<TaskModel> GetTask()
         {
-            return db.TaskModels;
+            var userId = User.Identity.Name;
+            return db.TaskModels.Where(task => task.User == userId);
         }
 
         // GET: api/Task/5
+        [Authorize]
         [ResponseType(typeof(TaskModel))]
         public async Task<IHttpActionResult> GetTask(int id)
         {
@@ -36,20 +40,8 @@ namespace ProjectWebServer.Controllers
             return Ok(taskModel);
         }
 
-        // GET: api/Task/user@gmail.com
-        [ResponseType(typeof(TaskModel))]
-        public async Task<IHttpActionResult> GetTask(string username)
-        {
-            TaskModel taskModel = await db.TaskModels.Where(x => x.User == username).FirstOrDefaultAsync();
-            if (taskModel == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(taskModel);
-        }
-
         // PUT: api/Task/5
+        [Authorize]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutTask(int id, TaskModel taskModel)
         {
@@ -85,6 +77,7 @@ namespace ProjectWebServer.Controllers
         }
 
         // POST: api/Task
+        [Authorize]
         [ResponseType(typeof(TaskModel))]
         public async Task<IHttpActionResult> PostTask(TaskModel taskModel)
         {
@@ -100,6 +93,7 @@ namespace ProjectWebServer.Controllers
         }
 
         // DELETE: api/Task/5
+        [Authorize]
         [ResponseType(typeof(TaskModel))]
         public async Task<IHttpActionResult> DeleteTask(int id)
         {
