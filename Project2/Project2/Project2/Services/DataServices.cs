@@ -222,8 +222,12 @@ namespace Project2.Services
                         found = true;
                         if (task.LastModifiedDate > remote.LastModifiedDate)
                         {
+                            var localID = task.Id;
                             task.Id = remote.Id;
-                            await PutTask(task);
+                            var result = await PutTask(task);
+                            task.Id = localID;
+                            task.ServerId = result;
+                            dbhelp.UpdateTask(task);
                         }
                         break;
                     }
