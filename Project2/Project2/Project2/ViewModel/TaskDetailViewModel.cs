@@ -70,8 +70,7 @@ namespace Project2.ViewModel
                 {
                     taskRepo.DeleteTask(task.Id);
 
-                    await DataServices.Synchronise();
-                    SettingServices.LastSynchronisationTime = DateTime.Now;
+                    await DataServices.DeleteTask(task);
                     await nav.PushAsync(new HomePage());
                 }
             }

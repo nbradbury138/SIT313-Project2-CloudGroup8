@@ -154,7 +154,7 @@ namespace Project2.Services
             var client = new HttpClient();
 
             string deleteID;
-            if (task.ServerId < 0)
+            if (task.ServerId > 0)
                 deleteID = task.ServerId.ToString();
             else
                 return 0;
@@ -168,7 +168,7 @@ namespace Project2.Services
 
             try
             {
-                response = await client.DeleteAsync(string.Format("https://sit313apiserver.azurewebsites.net/api/Task/{0}", deleteID));
+                response = await client.DeleteAsync(string.Format("https://sit313apiserver.azurewebsites.net/api/TaskModels/{0}", deleteID));
 
                 if (response.StatusCode != System.Net.HttpStatusCode.OK)
                     await Application.Current.MainPage.DisplayAlert("Error", "Could not remove task from server with code: " + response.StatusCode.ToString(), "OK", "Cancel");
