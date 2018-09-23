@@ -20,7 +20,10 @@ namespace Project2
             if (!string.IsNullOrEmpty(SettingServices.AccessToken))
             {
                 if (SettingServices.AccessTokenExpirationDate > DateTime.UtcNow.AddHours(1))
+                {
+                    DataServices.Synchronise();
                     MainPage = new NavigationPage(new HomePage());
+                }
             }
             else
                 MainPage = new NavigationPage(new Login());

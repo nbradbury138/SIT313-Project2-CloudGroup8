@@ -188,52 +188,91 @@ namespace Project2.Services
             var localTasks = dbhelp.GetAllTasksForUser(SettingServices.Username);
             var remoteTasks = await GetTask();
 
-            foreach(var task in remoteTasks)
+            foreach(var remote in remoteTasks)
             {
                 var found = false;
                 foreach(var local in localTasks)
                 {
-                    if (local.ServerId == task.Id)
+                    if (local.ServerId == remote.Id)
                     {
                         found = true;
-                        if (task.LastModifiedDate > local.LastModifiedDate)
+                        if (remote.LastModifiedDate > local.LastModifiedDate)
                         {
-                            task.ServerId = task.Id;
-                            task.Id = local.Id;
-                            dbhelp.UpdateTask(task);
+                            local.Description = remote.Description;
+                            local.DueDate = remote.DueDate;
+                            local.LastModifiedDate = remote.LastModifiedDate;
+                            local.Priority = remote.Priority;
+                            local.ServerId = remote.Id;
+                            local.Status = remote.Status;
+                            local.TaskName = remote.TaskName;
+                            local.User = remote.User;
+                            dbhelp.UpdateTask(local);
                         }
                         break;
                     }
                 }
                 if (!found)
                 {
-                    task.ServerId = task.Id;
-                    dbhelp.InsertTask(task);
+                    var newTask = new TaskData();
+
+                    newTask.ServerId = remote.Id;
+                    newTask.Description = remote.Description;
+                    newTask.DueDate = remote.DueDate;
+                    newTask.LastModifiedDate = remote.LastModifiedDate;
+                    newTask.Priority = remote.Priority;
+                    newTask.ServerId = remote.Id;
+                    newTask.Status = remote.Status;
+                    newTask.TaskName = remote.TaskName;
+                    newTask.User = remote.User;
+                    dbhelp.InsertTask(newTask);
                 }
             }
 
-            foreach(var task in localTasks)
+            foreach(var local in localTasks)
             {
                 var found = false;
                 foreach (var remote in remoteTasks)
                 {
-                    if (remote.Id == task.ServerId)
+                    if (remote.Id == local.ServerId)
                     {
                         found = true;
-                        if (task.LastModifiedDate > remote.LastModifiedDate)
+                        if (local.LastModifiedDate > remote.LastModifiedDate)
                         {
-                            var localID = task.Id;
-                            task.Id = remote.Id;
-                            var result = await PutTask(task);
-                            task.Id = localID;
-                            task.ServerId = result;
-                            dbhelp.UpdateTask(task);
+                            remote.Description = local.Description;
+                            remote.DueDate = local.DueDate;
+                            remote.LastModifiedDate = local.LastModifiedDate;
+                            remote.Priority = local.Priority;
+                            remote.ServerId = local.ServerId;
+                            remote.Id = local.ServerId;
+                            remote.Status = local.Status;
+                            remote.TaskName = local.TaskName;
+                            remote.User = local.User;
+                            await PutTask(remote);
                         }
                         break;
                     }
                 }
                 if (!found)
-                    await PostTask(task);
+                {
+                    var newTask = new TaskData();
+
+                    newTask.Description = local.Description;
+                    newTask.DueDate = local.DueDate;
+                    newTask.LastModifiedDate = local.LastModifiedDate;
+                    newTask.Priority = local.Priority;
+                    newTask.Status = local.Status;
+                    newTask.TaskName = local.TaskName;
+                    newTask.User = local.User;
+
+                    var result = await PostTask(newTask);
+                    local.ServerId = result;
+                    dbhelp.UpdateTask(local);
+
+                    newTask.ServerId = local.ServerId;
+                    newTask.Id = local.ServerId;
+                    await PutTask(newTask);
+                }
+                    
             }
         }
     }

@@ -1,11 +1,10 @@
 using Project2.Services;
 using Project2.View;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Project2.View;
-using Plugin.Connectivity;
 
 namespace Project2.ViewModel
 {
@@ -55,6 +54,8 @@ namespace Project2.ViewModel
                             SettingServices.Password = Password;
                             SettingServices.AccessToken = loggedIn.AccessToken;
                             SettingServices.AccessTokenExpirationDate = loggedIn.ExpirationTime;
+
+                            await DataServices.Synchronise();
 
                             // var accessToken = loggedIn.AccessToken;
                             // Application.Current.Properties["username"] = Email;
